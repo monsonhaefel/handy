@@ -8,7 +8,7 @@ import com.handy.aws.data_access.Inventory_TestData;
 import com.handy.aws.functions.RequestClass;
 import com.handy.aws.functions.ResponseHTML;
 
-public class InventoryListFunction_M5_L3 extends Inventory_TestData implements RequestHandler<RequestClass, ResponseHTML>{  
+public class InventoryFunction_M5_L3 extends Inventory_TestData implements RequestHandler<RequestClass, ResponseHTML>{  
     
    
     @Override
