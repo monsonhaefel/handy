@@ -3,7 +3,7 @@ package com.handy.aws.functions;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
-public class InventoryFunction implements RequestHandler<Object, String> {
+public class InventoryFunction_Module4_Lesson4 implements RequestHandler<Object, String> {
 
     @Override
     public String handleRequest(Object input, Context context) {
