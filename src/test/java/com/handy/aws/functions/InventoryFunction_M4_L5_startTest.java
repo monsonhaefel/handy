@@ -11,7 +11,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 /**
  * A simple test harness for locally invoking your Lambda function handler.
  */
-public class InventoryFunctionTest {
+public class InventoryFunction_M4_L5_startTest {
 
     private static Object input;
 
@@ -31,8 +31,8 @@ public class InventoryFunctionTest {
     }
 
     @Test
-    public void testInventoryFunction() {
-        InventoryFunction handler = new InventoryFunction();
+    public void testInventoryFunction_M4_L5_start() {
+        InventoryFunction_M4_L5 handler = new InventoryFunction_M4_L5();
         Context ctx = createContext();
 
         String output = handler.handleRequest(input, ctx);

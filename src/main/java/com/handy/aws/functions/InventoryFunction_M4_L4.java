@@ -4,7 +4,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.handy.aws.domain.Product;
 
-public class InventoryFunction_M4_L4_finish implements RequestHandler<Object, String> {
+public class InventoryFunction_M4_L4 implements RequestHandler<Object, String> {
  	
 	private Product [] products;
     
