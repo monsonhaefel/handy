@@ -1,8 +1,7 @@
 package com.handy.aws.functions;
 import com.handy.aws.data_access.InventoryDA;
 import com.handy.aws.data_access.InventoryDAFactory;
-import com.handy.aws.data_access.InventoryDAType;
-import com.handy.aws.data_access.Inventory_MySQL;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +22,7 @@ public class InventoryFunction_M8_L3 implements RequestHandler<RequestClass, Res
     	String id = (String)request.queryStringParameters.getOrDefault("id", "-1");
     	
     	if(id.equalsIgnoreCase("All")) {
+    		
     		List<Product> products = da.getAllProducts(context);
     		if(products != null) {
     			response.setBody(products);

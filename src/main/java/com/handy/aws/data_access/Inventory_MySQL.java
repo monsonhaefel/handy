@@ -51,12 +51,14 @@ public class Inventory_MySQL implements InventoryDA {
         
             
             while (rs.next()) {
+            	  String prodIdstr = rs.getString("product_id");
                   String toolType = rs.getString("tool_type");
                   String brand = rs.getString("brand");
                   String name = rs.getString("name");
                   String countStr = rs.getString("count");
                   int count = Integer.parseInt(countStr);
-                  Product product = new Product(productId, toolType, brand, name, count);
+                  int prodId = Integer.parseInt(prodIdstr);
+                  Product product = new Product(prodId, toolType, brand, name, count);
                   products.add(product);
             }
             
