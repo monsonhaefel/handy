@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -20,18 +22,34 @@ public class Inventory_MySQL implements InventoryDA {
     private static final String DB_NAME = "handydev";
 
     
+    
     public Product getProductById(Integer productId, Context context) {
+
+    	return this.getProducts(productId, context).get(0);
+    }
+    public List<Product> getAllProducts(Context context) {
     	
-    	Map<String, String> env = System.getenv();
-    	String endpoint = env.getOrDefault("DatabaseEndpoint", RDS_INSTANCE_HOSTNAME);
+    	return this.getProducts(null,context);
     	
-        String JDBC_URL = "jdbc:mysql://" + endpoint + ":" + RDS_INSTANCE_PORT + "/HandyDev";
- 
+    }
+    
+    private List<Product> getProducts(Integer productId, Context context) {
+    	
+    	List<Product> products = new ArrayList<Product>();
+    	
         try {
             
-            Connection con = DriverManager.getConnection(JDBC_URL, getDBProperties());
+            Connection con = DriverManager.getConnection(getJdbcUrl(), getDBProperties());
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM HandyDev.inventory WHERE product_id = " + productId);
+            
+            ResultSet rs = null;
+            if(productId == null) { // selecting all
+            	rs = stmt.executeQuery("SELECT * FROM HandyDev.inventory");
+            }else {
+            	rs = stmt.executeQuery("SELECT * FROM HandyDev.inventory WHERE product_id = " + productId);
+            }
+        
+            
             while (rs.next()) {
                   String toolType = rs.getString("tool_type");
                   String brand = rs.getString("brand");
@@ -39,8 +57,7 @@ public class Inventory_MySQL implements InventoryDA {
                   String countStr = rs.getString("count");
                   int count = Integer.parseInt(countStr);
                   Product product = new Product(productId, toolType, brand, name, count);
-                  context.getLogger().log("Product Found: " + product.toString());
-                  return product;
+                  products.add(product);
             }
             
         }catch( Exception e) {
@@ -48,7 +65,16 @@ public class Inventory_MySQL implements InventoryDA {
             return null;
         }
         context.getLogger().log("return  null");
-        return null;
+        return products;
+
+    }
+    
+    public String getJdbcUrl() {
+    	Map<String, String> env = System.getenv();
+    	String endpoint = env.getOrDefault("DatabaseEndpoint", RDS_INSTANCE_HOSTNAME);
+    	
+        String JDBC_URL = "jdbc:mysql://" + endpoint + ":" + RDS_INSTANCE_PORT + "/HandyDev";
+        return JDBC_URL;
     }
     
     public Properties getDBProperties() {
