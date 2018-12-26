@@ -32,7 +32,7 @@ public class InventoryFunction_M9_L1Test {
 
     @Test
     public void testInventoryFunction_M9_L1() {
-        InventoryFunction_M9_L1 handler = new InventoryFunction_M9_L1();
+        Old_Junk_InventoryFunction_M9_L1 handler = new Old_Junk_InventoryFunction_M9_L1();
         Context ctx = createContext();
 
         String output = handler.handleRequest(input, ctx);

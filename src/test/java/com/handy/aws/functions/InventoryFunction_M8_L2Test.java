@@ -32,7 +32,7 @@ public class InventoryFunction_M8_L2Test {
 
     @Test
     public void testInventoryFunction_M8_L2() {
-        InventoryFunction_M8_L2 handler = new InventoryFunction_M8_L2();
+        InventoryFindFunction_M8_L2 handler = new InventoryFindFunction_M8_L2();
         Context ctx = createContext();
 
         String output = handler.handleRequest(input, ctx);

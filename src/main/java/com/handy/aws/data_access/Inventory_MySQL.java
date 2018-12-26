@@ -21,8 +21,15 @@ public class Inventory_MySQL implements InventoryDA {
     private static final String DB_PASS = "12345678";
     private static final String DB_NAME = "handydev";
 
-    
-    
+    public boolean insertProducts(List<Product> productsToInsert, Context context){
+    	System.out.println("^^^^^^^^ Attempting to call Inventory_MySQL.updateProducts(). This method is not implemented ^^^^^^^");
+    	return false;
+    }
+
+    public boolean updateProducts(List<Product> productsToUpdate, Context context) {
+    	System.out.println("^^^^^^^^ Attempting to call Inventory_MySQL.updateProducts(). This method is not implemented ^^^^^^^");
+    	return false;
+    }
     public Product getProductById(Integer productId, Context context) {
 
     	return this.getProducts(productId, context).get(0);

@@ -32,7 +32,7 @@ public class InventoryFunction_M5_L1Test {
 
     @Test
     public void testInventoryFunction_M5_L1() {
-        InventoryFunction_M5_L1 handler = new InventoryFunction_M5_L1();
+        InventoryFindFunction_M5_L1 handler = new InventoryFindFunction_M5_L1();
         Context ctx = createContext();
 
         String output = handler.handleRequest(input, ctx);

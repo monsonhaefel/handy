@@ -10,5 +10,9 @@ public interface InventoryDA {
     public Product getProductById(Integer productId, Context context);
     
     public List<Product> getAllProducts(Context context);
+    
+    public boolean insertProducts(List<Product> productsToInsert, Context context);
+    
+    public boolean updateProducts(List<Product> productsToUpdate, Context context);
 
 }
